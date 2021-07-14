@@ -26,6 +26,8 @@ namespace tabuleiro
         }
         public void colocarPeca(Peca peca, Posicao pos)
         {
+            if (existePeca(pos))
+                throw new TabuleiroException("Ja existe uma peça nesta posição!");
             pecas[pos.linha, pos.coluna] = peca;
             peca.posicao = pos;
         }
@@ -46,7 +48,7 @@ namespace tabuleiro
         {
             if (!posicaoEhValida(pos))
             {
-                throw new Exception("Posição invalida!");
+                throw new TabuleiroException("Posição invalida!");
             }
         }
 
