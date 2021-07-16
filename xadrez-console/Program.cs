@@ -42,9 +42,16 @@ namespace xadrez_console
                         Console.WriteLine(e.Message);
                         Console.ReadLine();
                     }
+                    catch(Exception)
+                    {
+                        Console.WriteLine("Erro: Posição invalida!");
+                        Console.ReadLine();
+                    }
+
 
                 }
-                
+                Console.Clear();
+                Tela.imprimirPartida(partida);
             }
             catch (Exception e)
             {
