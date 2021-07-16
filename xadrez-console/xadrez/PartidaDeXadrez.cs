@@ -16,16 +16,18 @@ namespace xadrez
         private HashSet<Peca> pecas;
         private HashSet<Peca> capturadas;
         public bool xeque { get; set; }
+        public Peca vulneravelEnPassant { get; private set; }
         public PartidaDeXadrez()
         {
             tabuleiro = new Tabuleiro(8, 8);
             turno = 1;
             jogadorAtual = Cor.Branca;
             terminada = false;
+            xeque = false;
+            vulneravelEnPassant = null;
             pecas = new HashSet<Peca>();
             capturadas = new HashSet<Peca>();
             colocarPecas();
-            xeque = false;
         }
         public HashSet<Peca> pecasCapturadas(Cor cor)
         {
@@ -98,6 +100,7 @@ namespace xadrez
             colocarNovaPeca('f', 2, new Torre(tabuleiro, Cor.Branca));
             colocarNovaPeca('f', 1, new Torre(tabuleiro, Cor.Branca));
             colocarNovaPeca('e', 2, new Torre(tabuleiro, Cor.Branca));
+            colocarNovaPeca('c', 1, new Bispo(tabuleiro, Cor.Branca));
 
             colocarNovaPeca('d', 8, new Torre(tabuleiro, Cor.Preta));
             colocarNovaPeca('d', 7, new Torre(tabuleiro, Cor.Preta));
